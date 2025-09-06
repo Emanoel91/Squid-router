@@ -1302,22 +1302,22 @@ col1, col2 = st.columns(2)
 
 with col1:
     fig_stacked_volume = px.bar(
-    stablecoin_data,
-    x="DATE",
-    y="VOLUME OF SWAPS",
-    color="TOKEN",
-    title="Volume of Swaps by Stablecoin Over Time"
+        stablecoin_data,
+        x="DATE",
+        y="VOLUME OF SWAPS",
+        color="TOKEN",
+        title="Volume of Swaps by Stablecoin Over Time"
     )
     fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
     fig_stacked_txn = px.bar(
-    stablecoin_data,
-    x="DATE",
-    y="NUMBER OF SWAPS",
-    color="TOKEN",
-    title="Number of Swaps by Stablecoin Over Time"
+        stablecoin_data,
+        x="DATE",
+        y="NUMBER OF SWAPS",
+        color="TOKEN",
+        title="Number of Swaps by Stablecoin Over Time"
     )
     fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
@@ -1326,22 +1326,22 @@ col3, col4 = st.columns(2)
 
 with col3:
     fig_line_user = px.line(
-    stablecoin_data,
-    x="DATE",
-    y="NUMBER OF USERS",
-    color="TOKEN",
-    title="Number of Swappers by Stablecoin Over Time"
+        stablecoin_data,
+        x="DATE",
+        y="NUMBER OF USERS",
+        color="TOKEN",
+        title="Number of Swappers by Stablecoin Over Time"
     )
     fig_line_user.update_layout(yaxis_title="Wallet count")
     st.plotly_chart(fig_line_user, use_container_width=True)
 
 with col4:
     fig_line_route = px.line(
-    stablecoin_data,
-    x="DATE",
-    y="NUMBER OF UNIQUE ROUTES",
-    color="TOKEN",
-    title="Number of Unique Routes by Stablecoin Over Time"
+        stablecoin_data,
+        x="DATE",
+        y="NUMBER OF UNIQUE ROUTES",
+        color="TOKEN",
+        title="Number of Unique Routes by Stablecoin Over Time"
     )
     fig_line_route.update_layout(yaxis_title="Path count")
     st.plotly_chart(fig_line_route, use_container_width=True)
