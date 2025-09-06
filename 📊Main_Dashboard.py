@@ -682,10 +682,10 @@ def load_path_data(start_date, end_date):
       COUNT(DISTINCT id) AS "🔗Transactions",
       round(COUNT(DISTINCT id)/COUNT(DISTINCT user)) as "📋Transaction per User",
       COUNT(DISTINCT user) AS "👥Users", 
-      ROUND(SUM(amount_usd)) AS "💰Volume ($)",
-      SUM(AMOUNT_USD)/COUNT(DISTINCT USER) as "💸Volume per User ($)",
+      ROUND(SUM(amount_usd),1) AS "💰Volume ($)",
+      round((SUM(AMOUNT_USD)/COUNT(DISTINCT USER)),1) as "💸Volume per User ($)",
       count(distinct raw_asset) as "💎Swapped Tokens",
-      round(median(amount_usd)) as "📊Median Volume of Txns ($)"
+      round(median(amount_usd),1) as "📊Median Volume of Txns ($)"
     FROM axelar_service
     GROUP BY 1
     ORDER BY 2 DESC
