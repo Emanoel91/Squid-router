@@ -361,7 +361,7 @@ with col1:
         line=dict(color="yellow")
     ))
     fig1.update_layout(
-        title="Swaps Over Time",
+        title="Number of Transactions & Volume Over Time",
         yaxis=dict(title="Txns count"),
         yaxis2=dict(title="$USD", overlaying="y", side="right"),
         xaxis=dict(title=" "),
@@ -396,7 +396,7 @@ with col2:
         line=dict(color="yellow")
     ))
     fig2.update_layout(
-        title="Swappers Over Time",
+        title="Number of Users Over Time",
         yaxis=dict(title="Wallet count"),
         yaxis2=dict(title="$USD", overlaying="y", side="right"),
         xaxis=dict(title=" "),
