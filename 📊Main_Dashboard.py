@@ -78,7 +78,7 @@ with col1:
     timeframe = st.selectbox("Select Time Frame", ["month", "week", "day"])
 
 with col2:
-    start_date = st.date_input("Start Date", value=pd.to_datetime("2022-11-01"))
+    start_date = st.date_input("Start Date", value=pd.to_datetime("2023-01-01"))
 
 with col3:
     end_date = st.date_input("End Date", value=pd.to_datetime("2025-09-30"))
@@ -326,7 +326,7 @@ def load_time_series_data(timeframe, start_date, end_date):
         COUNT(DISTINCT id) AS Swap_Count, 
         COUNT(DISTINCT user) AS Swapper_Count, 
         ROUND(SUM(amount_usd)) AS Swap_Volume,
-        round(count(distinct id)/count(distinct user)) as Swap_Count_per_Swapper
+        round((count(distinct id)/count(distinct user)),1) as Swap_Count_per_Swapper
     FROM axelar_service
     WHERE created_at::date >= '{start_str}' 
       AND created_at::date <= '{end_str}'
