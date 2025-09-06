@@ -568,7 +568,7 @@ with col1:
         color="PATH",
         title=f"Volume by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
+    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD", xaxis_title="")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
@@ -579,7 +579,7 @@ with col2:
         color="PATH",
         title=f"Transaction by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
+    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count", xaxis_title="")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
 
 # --- Row 6 ------------------------------------------------------------------------------------
@@ -678,10 +678,14 @@ def load_path_data(start_date, end_date):
         )
     )
     SELECT 
-      source_chain || '➡' || destination_chain AS path, 
-      COUNT(DISTINCT id) AS "Number of Transfers", 
-      COUNT(DISTINCT user) AS "Number of Users", 
-      ROUND(SUM(amount_usd)) AS "Volume of Transfers USD"
+      source_chain || '➡' || destination_chain AS "🔀Path", 
+      COUNT(DISTINCT id) AS "🔗Transactions",
+      round(COUNT(DISTINCT id)/COUNT(DISTINCT user)) as "📋Transaction per User",
+      COUNT(DISTINCT user) AS "👥Users", 
+      ROUND(SUM(amount_usd)) AS "💰Volume ($)",
+      SUM(AMOUNT_USD)/COUNT(DISTINCT USER) as "💸Volume per User ($)",
+      count(distinct raw_asset) as "💎Swapped Tokens",
+      round(median(amount_usd)) as "📊Median Volume of Txns ($)"
     FROM axelar_service
     GROUP BY 1
     ORDER BY 2 DESC
