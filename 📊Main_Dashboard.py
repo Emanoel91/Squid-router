@@ -196,36 +196,32 @@ def load_kpi_data(timeframe, start_date, end_date):
 df_kpi = load_kpi_data(timeframe, start_date, end_date)
 
 # --- KPI Row ------------------------------------------------------------------------------------------------------
+card_style = """
+    <div style="
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        ">
+        <h4 style="margin: 0; font-size: 16px; color: #555;">{label}</h4>
+        <p style="margin: 5px 0 0; font-size: 20px; font-weight: bold; color: #000;">{value}</p>
+    </div>
+"""
+
 col1, col2, col3 = st.columns(3)
-
-col1.metric(
-    label="Volume of Swaps",
-    value=f"${df_kpi['VOLUME_OF_SWAPS'][0]:,}"
-)
-
-col2.metric(
-    label="Number of Swaps",
-    value=f"{df_kpi['NUMBER_OF_SWAPS'][0]:,} Swaps"
-)
-
-col3.metric(
-    label="Number of Swappers",
-    value=f"{df_kpi['NUMBER_OF_SWAPPERS'][0]:,} Wallets"
-)
+with col1:
+    st.markdown(card_style.format(label="Volume of Swaps", value=f"${df_kpi['VOLUME_OF_SWAPS'][0]:,}"), unsafe_allow_html=True)
+with col2:
+    st.markdown(card_style.format(label="Number of Swaps", value=f"{df_kpi['NUMBER_OF_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
+with col3:
+    st.markdown(card_style.format(label="Number of Swappers", value=f"{df_kpi['NUMBER_OF_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
 
 col4, col5, col6 = st.columns(3)
-
-col4.metric(
-    label="Avg Daily Swap Volume",
-    value=f"${df_kpi['AVG_DAILY_SWAP_VOLUME'][0]:,}"
-)
-
-col5.metric(
-    label="Avg Daily Swaps",
-    value=f"{df_kpi['AVG_DAILY_SWAPS'][0]:,} Swaps"
-)
-
-col6.metric(
-    label="Avg Daily Swappers",
-    value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"
-)
+with col4:
+    st.markdown(card_style.format(label="Avg Daily Swap Volume", value=f"${df_kpi['AVG_DAILY_SWAP_VOLUME'][0]:,}"), unsafe_allow_html=True)
+with col5:
+    st.markdown(card_style.format(label="Avg Daily Swaps", value=f"{df_kpi['AVG_DAILY_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
+with col6:
+    st.markdown(card_style.format(label="Avg Daily Swappers", value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
