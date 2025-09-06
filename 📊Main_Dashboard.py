@@ -179,9 +179,12 @@ def load_kpi_data(timeframe, start_date, end_date):
           )
     )
     SELECT 
-        COUNT(DISTINCT id) AS Number_of_Transfers, 
-        COUNT(DISTINCT user) AS Number_of_Users, 
-        ROUND(SUM(amount_usd)) AS Volume_of_Transfers
+        COUNT(DISTINCT id) AS "Number of Swaps", 
+        COUNT(DISTINCT user) AS "Number of Swappers", 
+        ROUND(SUM(amount_usd)) AS "Volume of Swaps",
+        round(count(distinct id)/count(distinct created_at::date)) as "Avg Daily Swaps",
+        round(count(distinct user)/count(distinct created_at::date)) as "Avg Daily Swappers",
+        round(sum(amount_usd)/count(distinct created_at::date)) as "Avg Daily Swap Volume"
     FROM axelar_service
     WHERE created_at::date >= '{start_str}' 
       AND created_at::date <= '{end_str}'
@@ -197,16 +200,33 @@ df_kpi = load_kpi_data(timeframe, start_date, end_date)
 col1, col2, col3 = st.columns(3)
 
 col1.metric(
-    label="Volume of Transfers",
-    value=f"${df_kpi['VOLUME_OF_TRANSFERS'][0]:,}"
+    label="Volume of Swaps",
+    value=f"${df_kpi["Volume of Swaps"][0]:,}"
 )
 
 col2.metric(
-    label="Number of Transfers",
-    value=f"{df_kpi['NUMBER_OF_TRANSFERS'][0]:,} Txns"
+    label="Number of Swaps",
+    value=f"{df_kpi["Number of Swaps"][0]:,} Swaps"
 )
 
 col3.metric(
-    label="Number of Users",
-    value=f"{df_kpi['NUMBER_OF_USERS'][0]:,} Addresses"
+    label="Number of Swappers",
+    value=f"{df_kpi["Number of Swappers"][0]:,} Wallets"
+)
+
+col4, col5, col6 = st.columns(3)
+
+col4.metric(
+    label="Avg Daily Swap Volume",
+    value=f"${df_kpi["Avg Daily Swap Volume"][0]:,}"
+)
+
+col5.metric(
+    label="Avg Daily Swaps",
+    value=f"{df_kpi["Avg Daily Swaps"][0]:,} Swaps"
+)
+
+col6.metric(
+    label="Avg Daily Swappers",
+    value=f"{df_kpi["Avg Daily Swappers"][0]:,} Wallets"
 )
