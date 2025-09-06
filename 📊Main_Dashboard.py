@@ -522,6 +522,7 @@ def load_time_series_data_by_path(timeframe, start_date, end_date):
 # --- Load Data ----------------------------------------------------------------------------------------------------
 time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
 # --- Chart: Row 4 --------------------------------------------------------------------------------------------------------
+
 # جدا کردن Source و Destination از Path
 time_series_data_by_path[["Source", "Destination"]] = time_series_data_by_path["PATH"].str.split("➡", expand=True)
 
@@ -548,7 +549,15 @@ filtered_df = time_series_data_by_path[
     (time_series_data_by_path["Destination"] == selected_destination)
 ]
 
-# --- نمودارها (همان سبک قبلی: bar با stack) ---------------------------------------
+# --- KPIها ----------------------------------------------------------------
+total_volume = filtered_df["SWAP_VOLUME"].sum()
+total_txn = filtered_df["SWAP_COUNT"].sum()
+
+kpi_col1, kpi_col2 = st.columns(2)
+kpi_col1.metric("Total Volume ($USD)", f"${total_volume:,.0f}")
+kpi_col2.metric("Total Transactions", f"{total_txn:,}")
+
+# --- نمودارها (ستونی خطی با دو شاخص) ---------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -559,7 +568,7 @@ with col1:
         color="PATH",
         title=f"Volume by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_volume.update_layout(barmode="stack", xaxis_title="", yaxis_title="$USD")
+    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
@@ -570,5 +579,5 @@ with col2:
         color="PATH",
         title=f"Transaction by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_txn.update_layout(barmode="stack", xaxis_title="", yaxis_title="Txns count")
+    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
