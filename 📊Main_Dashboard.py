@@ -201,7 +201,7 @@ col1, col2, col3 = st.columns(3)
 
 col1.metric(
     label="Volume of Swaps",
-    value=f"${df_kpi["Volume of Swaps"][0]:,}"
+    value=f"${df_kpi['Volume of Swaps'][0]:,}"
 )
 
 col2.metric(
