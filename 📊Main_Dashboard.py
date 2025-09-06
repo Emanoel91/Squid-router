@@ -1304,7 +1304,7 @@ with col1:
     fig_stacked_volume = px.bar(
         stablecoin_data,
         x="DATE",
-        y="VOLUME OF SWAPS",
+        y="VOLUME_OF_SWAPS",
         color="TOKEN",
         title="Volume of Swaps by Stablecoin Over Time"
     )
@@ -1315,7 +1315,7 @@ with col2:
     fig_stacked_txn = px.bar(
         stablecoin_data,
         x="DATE",
-        y="NUMBER OF SWAPS",
+        y="NUMBER_OF_SWAPS",
         color="TOKEN",
         title="Number of Swaps by Stablecoin Over Time"
     )
@@ -1328,7 +1328,7 @@ with col3:
     fig_line_user = px.line(
         stablecoin_data,
         x="DATE",
-        y="NUMBER OF USERS",
+        y="NUMBER_OF_USERS",
         color="TOKEN",
         title="Number of Swappers by Stablecoin Over Time"
     )
@@ -1339,7 +1339,7 @@ with col4:
     fig_line_route = px.line(
         stablecoin_data,
         x="DATE",
-        y="NUMBER OF UNIQUE ROUTES",
+        y="NUMBER_OF_UNIQUE_ROUTES",
         color="TOKEN",
         title="Number of Unique Routes by Stablecoin Over Time"
     )
