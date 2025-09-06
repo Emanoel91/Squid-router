@@ -212,16 +212,16 @@ card_style = """
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.markdown(card_style.format(label="Volume of Swaps", value=f"${df_kpi['VOLUME_OF_SWAPS'][0]:,}"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="💸Volume of Swaps", value=f"${df_kpi['VOLUME_OF_SWAPS'][0]:,}"), unsafe_allow_html=True)
 with col2:
-    st.markdown(card_style.format(label="Number of Swaps", value=f"{df_kpi['NUMBER_OF_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="🔄Number of Swaps", value=f"{df_kpi['NUMBER_OF_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
 with col3:
-    st.markdown(card_style.format(label="Number of Swappers", value=f"{df_kpi['NUMBER_OF_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="👥Number of Swappers", value=f"{df_kpi['NUMBER_OF_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
 
 col4, col5, col6 = st.columns(3)
 with col4:
-    st.markdown(card_style.format(label="Avg Daily Swap Volume", value=f"${df_kpi['AVG_DAILY_SWAP_VOLUME'][0]:,}"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="📊Avg Daily Swap Volume", value=f"${df_kpi['AVG_DAILY_SWAP_VOLUME'][0]:,}"), unsafe_allow_html=True)
 with col5:
-    st.markdown(card_style.format(label="Avg Daily Swaps", value=f"{df_kpi['AVG_DAILY_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="🔁Avg Daily Swaps", value=f"{df_kpi['AVG_DAILY_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
 with col6:
-    st.markdown(card_style.format(label="Avg Daily Swappers", value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
+    st.markdown(card_style.format(label="👨‍💻Avg Daily Swappers", value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
