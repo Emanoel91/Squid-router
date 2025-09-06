@@ -523,10 +523,10 @@ def load_time_series_data_by_path(timeframe, start_date, end_date):
 time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
 # --- Chart: Row 4 --------------------------------------------------------------------------------------------------------
 
-# جدا کردن Source و Destination از Path
+# split source & destination
 time_series_data_by_path[["Source", "Destination"]] = time_series_data_by_path["PATH"].str.split("➡", expand=True)
 
-# فیلترها به صورت کشویی با مقدار پیش‌فرض
+# defult filters
 col_filter1, col_filter2 = st.columns(2)
 
 with col_filter1:
@@ -543,7 +543,7 @@ with col_filter2:
         index=sorted(time_series_data_by_path["Destination"].unique()).index("base")
     )
 
-# اعمال فیلتر
+# filters
 filtered_df = time_series_data_by_path[
     (time_series_data_by_path["Source"] == selected_source) &
     (time_series_data_by_path["Destination"] == selected_destination)
@@ -557,7 +557,7 @@ kpi_col1, kpi_col2 = st.columns(2)
 kpi_col1.metric("Total Volume ($USD)", f"${total_volume:,.0f}")
 kpi_col2.metric("Total Transactions", f"{total_txn:,}")
 
-# --- نمودارها (ستونی خطی با دو شاخص) ---------------------------------------
+# --- charts ---------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
