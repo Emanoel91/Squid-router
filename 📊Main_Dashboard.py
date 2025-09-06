@@ -527,7 +527,7 @@ col1, col2 = st.columns(2)
 with col1:
     fig_stacked_volume = px.bar(
     time_series_data_by_path,
-    x="Date",
+    x="DATE",
     y="SWAP_VOLUME",
     color="PATH",
     title="Volume by Route Over Time"
@@ -538,7 +538,7 @@ with col1:
 with col2:
     fig_stacked_txn = px.bar(
     time_series_data_by_path,
-    x="Date",
+    x="DATE",
     y="SWAP_COUNT",
     color="PATH",
     title="Transaction by Route Over Time"
