@@ -877,32 +877,43 @@ def load_time_series_data_by_token(timeframe, start_date, end_date):
 
 # --- Load Data ----------------------------------------------------------------------------------------------------
 time_series_data_by_token = load_time_series_data_by_token(timeframe, start_date, end_date)
-# --- Chart: Row 7, 8 --------------------------------------------------------------------------------------------------------
 
-# defult filters
-col_filter1= st.columns(1)
+# --- Filters (single dropdown) ------------------------------------------------------------------------------------
+# نکته مهم: columns(1) لیست برمی‌گرداند؛ با کاما آن‌پک می‌کنیم تا ستون تکی داشته باشیم
+col_filter1, = st.columns(1)
 
 with col_filter1:
+    tokens = sorted(time_series_data_by_token["TOKEN"].dropna().unique().tolist())
+    if not tokens:
+        st.warning("No token data to display for the selected period.")
+        st.stop()
+
+    default_token = "USDC"
+    try:
+        default_idx = tokens.index(default_token)
+    except ValueError:
+        default_idx = 0  # اگر USDC وجود نداشت، اولین گزینه انتخاب شود
+
     selected_token = st.selectbox(
         "Select Token",
-        options=sorted(time_series_data_by_token["TOKEN"].unique()),
-        index=sorted(time_series_data_by_token["TOKEN"].unique()).index("USDC")
+        options=tokens,
+        index=default_idx
     )
 
-# filters
+# --- Filtering ----------------------------------------------------------------------------------------------------
 filtered_df = time_series_data_by_token[
-    (time_series_data_by_token["TOKEN"] == selected_token) 
+    (time_series_data_by_token["TOKEN"] == selected_token)
 ]
 
-# --- KPI ----------------------------------------------------------------
-total_volume = filtered_df["SWAP_VOLUME"].sum()
-total_txn = filtered_df["SWAP_COUNT"].sum()
+# --- KPI ----------------------------------------------------------------------------------------------------------
+total_volume = float(filtered_df["SWAP_VOLUME"].sum() or 0)
+total_txn = int(filtered_df["SWAP_COUNT"].sum() or 0)
 
 kpi_col1, kpi_col2 = st.columns(2)
 kpi_col1.metric("Total Volume ($USD)", f"${total_volume:,.0f}")
 kpi_col2.metric("Total Transactions", f"{total_txn:,}")
 
-# --- charts ---------------------------------------
+# --- Charts (same stacked bar style) ------------------------------------------------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
