@@ -522,27 +522,56 @@ def load_time_series_data_by_path(timeframe, start_date, end_date):
 # --- Load Data ----------------------------------------------------------------------------------------------------
 time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
 # --- Chart: Row 4 --------------------------------------------------------------------------------------------------------
+# بعد از لود داده
+time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
+
+# جدا کردن Source و Destination از Path
+time_series_data_by_path[["Source", "Destination"]] = time_series_data_by_path["PATH"].str.split("➡", expand=True)
+
+# فیلترها
+col_filter1, col_filter2 = st.columns(2)
+
+with col_filter1:
+    selected_source = st.multiselect(
+        "Source Chain",
+        options=sorted(time_series_data_by_path["Source"].unique()),
+        default=sorted(time_series_data_by_path["Source"].unique())
+    )
+
+with col_filter2:
+    selected_destination = st.multiselect(
+        "Destination Chain",
+        options=sorted(time_series_data_by_path["Destination"].unique()),
+        default=sorted(time_series_data_by_path["Destination"].unique())
+    )
+
+# اعمال فیلتر
+filtered_df = time_series_data_by_path[
+    time_series_data_by_path["Source"].isin(selected_source) &
+    time_series_data_by_path["Destination"].isin(selected_destination)
+]
+
+# --- نمودارها ----------------------------------------------------------------------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
     fig_stacked_volume = px.bar(
-    time_series_data_by_path,
-    x="DATE",
-    y="SWAP_VOLUME",
-    color="PATH",
-    title="Volume by Route Over Time"
+        filtered_df,
+        x="DATE",
+        y="SWAP_VOLUME",
+        color="PATH",
+        title="Volume by Route Over Time"
     )
     fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
     fig_stacked_txn = px.bar(
-    time_series_data_by_path,
-    x="DATE",
-    y="SWAP_COUNT",
-    color="PATH",
-    title="Transaction by Route Over Time"
+        filtered_df,
+        x="DATE",
+        y="SWAP_COUNT",
+        color="PATH",
+        title="Transaction by Route Over Time"
     )
     fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
-
