@@ -522,9 +522,6 @@ def load_time_series_data_by_path(timeframe, start_date, end_date):
 # --- Load Data ----------------------------------------------------------------------------------------------------
 time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
 # --- Chart: Row 4 --------------------------------------------------------------------------------------------------------
-# بعد از لود داده
-time_series_data_by_path = load_time_series_data_by_path(timeframe, start_date, end_date)
-
 # جدا کردن Source و Destination از Path
 time_series_data_by_path[["Source", "Destination"]] = time_series_data_by_path["PATH"].str.split("➡", expand=True)
 
@@ -535,14 +532,14 @@ with col_filter1:
     selected_source = st.selectbox(
         "Select Source Chain",
         options=sorted(time_series_data_by_path["Source"].unique()),
-        index=sorted(time_series_data_by_path["Source"].unique()).index("ethereum")  # مقدار پیش‌فرض
+        index=sorted(time_series_data_by_path["Source"].unique()).index("ethereum")
     )
 
 with col_filter2:
     selected_destination = st.selectbox(
         "Select Destination Chain",
         options=sorted(time_series_data_by_path["Destination"].unique()),
-        index=sorted(time_series_data_by_path["Destination"].unique()).index("base")  # مقدار پیش‌فرض
+        index=sorted(time_series_data_by_path["Destination"].unique()).index("base")
     )
 
 # اعمال فیلتر
@@ -551,7 +548,7 @@ filtered_df = time_series_data_by_path[
     (time_series_data_by_path["Destination"] == selected_destination)
 ]
 
-# --- نمودارها ----------------------------------------------------------------------------------------------------
+# --- نمودارها (همان سبک قبلی: bar با stack) ---------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -560,7 +557,7 @@ with col1:
         x="DATE",
         y="SWAP_VOLUME",
         color="PATH",
-        title=f"Volume for {selected_source} ➡ {selected_destination}"
+        title=f"Volume by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
     fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
@@ -571,7 +568,7 @@ with col2:
         x="DATE",
         y="SWAP_COUNT",
         color="PATH",
-        title=f"Transactions for {selected_source} ➡ {selected_destination}"
+        title=f"Transaction by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
     fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
