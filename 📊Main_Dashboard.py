@@ -85,7 +85,6 @@ with col3:
 # --- Query Function: Row1 --------------------------------------------------------------------------------------
 @st.cache_data
 def load_kpi_data(timeframe, start_date, end_date):
-    
     start_str = start_date.strftime("%Y-%m-%d")
     end_str = end_date.strftime("%Y-%m-%d")
 
@@ -228,5 +227,5 @@ col5.metric(
 
 col6.metric(
     label="Avg Daily Swappers",
-    value=f"{df_kpi['AVG_DAILY_SWAP_VOLUME'][0]:,} Wallets"
+    value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"
 )
