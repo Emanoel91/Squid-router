@@ -1125,7 +1125,7 @@ st.dataframe(df_display, use_container_width=True)
 
 # --- Row 10 ----------------------------------------------------------------------------------------------------------------
 @st.cache_data
-def load_stablecoin_data(start_date, end_date):
+def load_stablecoin_data(timeframe, start_date, end_date):
     start_str = pd.to_datetime(start_date).strftime("%Y-%m-%d")
     end_str = pd.to_datetime(end_date).strftime("%Y-%m-%d")
 
@@ -1295,7 +1295,7 @@ def load_stablecoin_data(start_date, end_date):
     return pd.read_sql(query, conn)
 
 # --- Load data ----------------------------------------------
-stablecoin_data = load_stablecoin_data(start_date, end_date)
+stablecoin_data = load_stablecoin_data(timeframe, start_date, end_date)
 # ------------------------------------------------------------
 
 col1, col2 = st.columns(2)
