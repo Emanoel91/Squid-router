@@ -1283,8 +1283,8 @@ def load_stablecoin_data(timeframe, start_date, end_date):
       else raw_asset end as Token 
     FROM axelar_service)
     SELECT 
-      date_trunc('{timeframe}', created_at) as Date, Token, COUNT(DISTINCT id) AS "Number of Swaps",  ROUND(SUM(amount_usd),1) AS "Volume of Swaps",
-      COUNT(DISTINCT user) AS "Number of Users", count(distinct (source_chain || '➡' || destination_chain)) as "Number of Unique Routes"
+      date_trunc('{timeframe}', created_at) as Date, Token, COUNT(DISTINCT id) AS Number_of_Swaps,  ROUND(SUM(amount_usd),1) AS Volume_of_Swaps,
+      COUNT(DISTINCT user) AS Number_of_Users, count(distinct (source_chain || '➡' || destination_chain)) as Number_of_Unique_Routes
       from overview
       where token in ('axlUSDC','USDC','axlUSDT','EUROC','AXLEUROC','USDT','DAI','axlDAI','PolygonUSDC','axlArbitrumUSDC',
       'AvalancheUSDC','sFRAX','FRAX','BUSD','axlBUSD','axlFRAX','axlOptimismUSDC','cUSD')
