@@ -559,7 +559,7 @@ with col1:
         color="PATH",
         title=f"Volume by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
+    fig_stacked_volume.update_layout(barmode="stack", xaxis_title="", yaxis_title="$USD")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
@@ -570,5 +570,5 @@ with col2:
         color="PATH",
         title=f"Transaction by Route Over Time ({selected_source} ➡ {selected_destination})"
     )
-    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
+    fig_stacked_txn.update_layout(barmode="stack", xaxis_title="", yaxis_title="Txns count")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
