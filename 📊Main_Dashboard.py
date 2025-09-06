@@ -1308,7 +1308,7 @@ with col1:
         color="TOKEN",
         title="Volume of Swaps by Stablecoin Over Time"
     )
-    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD")
+    fig_stacked_volume.update_layout(barmode="stack", yaxis_title="$USD", xaxis_title="")
     st.plotly_chart(fig_stacked_volume, use_container_width=True)
 
 with col2:
@@ -1319,7 +1319,7 @@ with col2:
         color="TOKEN",
         title="Number of Swaps by Stablecoin Over Time"
     )
-    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count")
+    fig_stacked_txn.update_layout(barmode="stack", yaxis_title="Txns count", xaxis_title="")
     st.plotly_chart(fig_stacked_txn, use_container_width=True)
 
 col3, col4 = st.columns(2)
@@ -1332,7 +1332,7 @@ with col3:
         color="TOKEN",
         title="Number of Swappers by Stablecoin Over Time"
     )
-    fig_line_user.update_layout(yaxis_title="Wallet count")
+    fig_line_user.update_layout(yaxis_title="Wallet count", xaxis_title="")
     st.plotly_chart(fig_line_user, use_container_width=True)
 
 with col4:
@@ -1343,5 +1343,5 @@ with col4:
         color="TOKEN",
         title="Number of Unique Routes by Stablecoin Over Time"
     )
-    fig_line_route.update_layout(yaxis_title="Path count")
+    fig_line_route.update_layout(yaxis_title="Path count", xaxis_title="")
     st.plotly_chart(fig_line_route, use_container_width=True)
