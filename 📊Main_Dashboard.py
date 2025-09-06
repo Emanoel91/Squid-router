@@ -326,7 +326,7 @@ def load_time_series_data(timeframe, start_date, end_date):
         COUNT(DISTINCT id) AS Swap_Count, 
         COUNT(DISTINCT user) AS Swapper_Count, 
         ROUND(SUM(amount_usd)) AS Swap_Volume,
-        round(sum(amount_usd)/count(distinct user)) as Swap_Volume_per_Swapper
+        round(count(distinct id)/count(distinct user)) as Swap_Count_per_Swapper
     FROM axelar_service
     WHERE created_at::date >= '{start_str}' 
       AND created_at::date <= '{end_str}'
@@ -349,16 +349,16 @@ with col1:
         y=df_ts["SWAP_COUNT"], 
         name="Swap Count", 
         yaxis="y1",
-        marker_color="orange"
+        marker_color="purple"
     )
 
     fig1.add_trace(go.Scatter(
         x=df_ts["DATE"], 
         y=df_ts["SWAP_VOLUME"], 
         name="Swap Volume", 
-        mode="lines+markers", 
+        mode="lines", 
         yaxis="y2",
-        line=dict(color="blue")
+        line=dict(color="yellow")
     ))
     fig1.update_layout(
         title="Swaps Over Time",
@@ -384,16 +384,16 @@ with col2:
         y=df_ts["SWAPPER_COUNT"], 
         name="Swapper Count", 
         yaxis="y1",
-        marker_color="orange"
+        marker_color="purple"
     )
   
     fig2.add_trace(go.Scatter(
         x=df_ts["DATE"], 
-        y=df_ts["SWAP_VOLUME_PER_SWAPPER"], 
-        name="Swap Volume per Swapper", 
-        mode="lines+markers", 
+        y=df_ts["SWAP_COUNT_PER_SWAPPER"], 
+        name="Swap Count per Swapper", 
+        mode="lines", 
         yaxis="y2",
-        line=dict(color="blue")
+        line=dict(color="yellow")
     ))
     fig2.update_layout(
         title="Swappers Over Time",
