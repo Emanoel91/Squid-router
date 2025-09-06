@@ -1104,9 +1104,10 @@ def load_token_data(start_date, end_date):
       COUNT(DISTINCT user) AS "👥Users", 
       ROUND(SUM(amount_usd),1) AS "💰Volume ($)",
       round((SUM(AMOUNT_USD)/COUNT(DISTINCT USER)),1) as "💸Volume per User ($)",
-      count(distinct (source_chain || '➡' || destination_chain)) as "Unique Routes",
+      count(distinct (source_chain || '➡' || destination_chain)) as "🔀Unique Routes",
       round(median(amount_usd),1) as "📊Median Volume of Txns ($)"
       from overview
+      where token is not null
       group by 1
       order by 2 desc 
     """
