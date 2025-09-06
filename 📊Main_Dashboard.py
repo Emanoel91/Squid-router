@@ -349,7 +349,7 @@ with col1:
         y=df_ts["SWAP_COUNT"], 
         name="Swap Count", 
         yaxis="y1",
-        marker_color="purple"
+        marker_color="violet"
     )
 
     fig1.add_trace(go.Scatter(
@@ -384,7 +384,7 @@ with col2:
         y=df_ts["SWAPPER_COUNT"], 
         name="Swapper Count", 
         yaxis="y1",
-        marker_color="purple"
+        marker_color="violet"
     )
   
     fig2.add_trace(go.Scatter(
