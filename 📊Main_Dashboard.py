@@ -1327,7 +1327,7 @@ col3, col4 = st.columns(2)
 with col3:
     fig_line_user = px.line(
     stablecoin_data,
-    x="DATE"
+    x="DATE",
     y="NUMBER OF USERS",
     color="TOKEN",
     title="Number of Swappers by Stablecoin Over Time"
