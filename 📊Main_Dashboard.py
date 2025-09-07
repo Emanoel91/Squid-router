@@ -471,7 +471,7 @@ with col2:
 # -------------------------------------------------------------------------------------------------------------------
 st.markdown(
     """
-    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-top:10px; margin-bottom:10px;">
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-bottom:10px;">
         <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
             Routes
         </h2>
@@ -765,14 +765,23 @@ def load_path_data(start_date, end_date):
 df_path = load_path_data(start_date, end_date)
 
 # --- Show table ---
-st.subheader("🔀Squid Activity by Path")
+st.subheader("🔀Squid Activity by Route")
 df_display = df_path.copy()
 df_display.index = df_display.index + 1
 df_display = df_display.applymap(lambda x: f"{x:,}" if isinstance(x, (int, float)) else x)
 st.dataframe(df_display, use_container_width=True)
-
+# --------------------------------------------------------------------------------------------------------------------------
+st.markdown(
+    """
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-bottom:10px;">
+        <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
+            Tokenology!
+        </h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # --- Row 7, 8 --------------------------------------------------------------------------------------------------------------
-
 @st.cache_data
 def load_time_series_data_by_token(timeframe, start_date, end_date):
     start_str = start_date.strftime("%Y-%m-%d")
@@ -947,7 +956,6 @@ def load_time_series_data_by_token(timeframe, start_date, end_date):
 time_series_data_by_token = load_time_series_data_by_token(timeframe, start_date, end_date)
 
 # --- Filters (single dropdown) ------------------------------------------------------------------------------------
-# نکته مهم: columns(1) لیست برمی‌گرداند؛ با کاما آن‌پک می‌کنیم تا ستون تکی داشته باشیم
 col_filter1, = st.columns(1)
 
 with col_filter1:
@@ -960,7 +968,7 @@ with col_filter1:
     try:
         default_idx = tokens.index(default_token)
     except ValueError:
-        default_idx = 0  # اگر USDC وجود نداشت، اولین گزینه انتخاب شود
+        default_idx = 0 
 
     selected_token = st.selectbox(
         "Select Token",
@@ -1186,12 +1194,23 @@ def load_token_data(start_date, end_date):
 df_token = load_token_data(start_date, end_date)
 
 # --- Show table ---
-st.subheader("🔀Squid Activity by Token")
+st.subheader("💎Squid Activity by Token")
 df_display = df_token.copy()
 df_display.index = df_display.index + 1
 df_display = df_display.applymap(lambda x: f"{x:,}" if isinstance(x, (int, float)) else x)
 st.dataframe(df_display, use_container_width=True)
 
+# --------------------------------------------------------------------------------------------------------------------------
+st.markdown(
+    """
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-bottom:10px;">
+        <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
+            Analysis of Stablecoins
+        </h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # --- Row 10 --------------------------------------------------------------------------------------------------------------------
 @st.cache_data
 def load_stablecoin_kpi(start_date, end_date):
