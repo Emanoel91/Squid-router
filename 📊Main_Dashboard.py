@@ -2197,7 +2197,7 @@ def load_stablecoin_avg_volume_data(timeframe, start_date, end_date):
     FROM axelar_service)
     SELECT 
       date_trunc('{timeframe}', created_at) as Date, ROUND(avg(amount_usd),1) AS avg_swap_volume,
-      ,avg(avg_swap_volume) over (ORDER BY Date rows BETWEEN 7 PRECEDING AND CURRENT ROW) as avg_7_Days_swap_volume
+      avg(avg_swap_volume) over (ORDER BY Date rows BETWEEN 7 PRECEDING AND CURRENT ROW) as avg_7_Days_swap_volume
       from overview
       where token in ('axlUSDC','USDC','axlUSDT','EUROC','AXLEUROC','USDT','DAI','axlDAI','PolygonUSDC','axlArbitrumUSDC',
       'AvalancheUSDC','sFRAX','FRAX','BUSD','axlBUSD','axlFRAX','axlOptimismUSDC','cUSD')
