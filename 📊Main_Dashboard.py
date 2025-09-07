@@ -2292,21 +2292,21 @@ st.markdown(
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 st.markdown("---")
-st.header("💬 نظر و امتیاز شما")
+st.header("💬 Your Feedback & Rating")
 
-# ورودی نظر
-comment = st.text_area("نظر خود را وارد کنید:")
+# Comment input
+comment = st.text_area("Write your feedback:")
 
-# ورودی امتیاز (ستاره‌ها)
+# Rating input (stars)
 rating = st.radio(
-    "امتیاز شما به این داشبورد (از ۱ تا ۵ ستاره):",
+    "Rate this dashboard (1 to 5 stars):",
     options=[1, 2, 3, 4, 5],
     format_func=lambda x: "⭐" * x
 )
 
-# دکمه ثبت
-if st.button("ثبت نظر"):
-    st.success(f"✅ نظر شما ثبت شد! امتیاز: {'⭐' * rating}")
+# Submit button
+if st.button("Submit Feedback"):
+    st.success(f"✅ Thank you! Your rating: {'⭐' * rating}")
     if comment:
-        st.write("متن نظر شما:")
+        st.write("Your feedback:")
         st.info(comment)
