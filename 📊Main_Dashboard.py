@@ -2292,7 +2292,7 @@ st.markdown(
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 st.markdown("---")
-st.header("💬 Feedback & Rating")
+st.header("💬 Feedback")
 
 # Initialize feedback list in session state
 if "feedback_list" not in st.session_state:
@@ -2301,22 +2301,18 @@ if "feedback_list" not in st.session_state:
 # Input fields
 name = st.text_input("Your Name:")
 comment = st.text_area("Your Feedback:")
-rating = st.radio(
-    "Your Rating (1–5 stars):",
-    options=[1, 2, 3, 4, 5],
-    format_func=lambda x: "⭐" * x
-)
 
 # Submit button
 if st.button("Submit Feedback"):
     if name.strip() == "":
         st.warning("⚠️ Please enter your name.")
+    elif comment.strip() == "":
+        st.warning("⚠️ Please write some feedback.")
     else:
         # Save feedback
         st.session_state.feedback_list.append({
             "name": name,
-            "comment": comment,
-            "rating": rating
+            "comment": comment
         })
         st.success("✅ Your feedback has been submitted!")
 
@@ -2324,6 +2320,5 @@ if st.button("Submit Feedback"):
 if st.session_state.feedback_list:
     st.markdown("### 📋 Submitted Feedback")
     for fb in st.session_state.feedback_list:
-        st.write(f"**{fb['name']}** — {'⭐' * fb['rating']}")
-        if fb["comment"]:
-            st.info(fb["comment"])
+        st.write(f"**{fb['name']}**")
+        st.info(fb["comment"])
