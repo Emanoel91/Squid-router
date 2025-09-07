@@ -36,7 +36,9 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
+# ----------------------------------------------------------------------------------------------------------------------------------
+st.info("⏳On-chain data retrieval may take a few moments. Please wait while the results load.")
+# ----------------------------------------------------------------------------------------------------------------------------------
 st.markdown(
     """
     <div style="background-color:#e4d902; padding:1px; border-radius:10px;">
@@ -47,8 +49,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# ----------------------------------------------------------------------------------------------------------------------------------
-st.info("⏳On-chain data retrieval may take a few moments. Please wait while the results load.")
+
 # --- Info -------------------------------------------------------------------------------------------------------------------------
 st.markdown(
     """
