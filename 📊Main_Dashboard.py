@@ -276,7 +276,7 @@ with col6:
 # -------------------------------------------------------------------------------------------------------------------
 st.markdown(
     """
-    <div style="background-color:#e4d902; padding:1px; border-radius:10px;">
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-top:20px;">
         <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
             Transactions & Active Users
         </h2>
