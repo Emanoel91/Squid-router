@@ -2212,39 +2212,40 @@ stablecoin_avg_volume_data = load_stablecoin_avg_volume_data(timeframe, start_da
 # ------------------------------------------------------------
 
 fig1 = go.Figure()
-    fig1.add_trace(
-        go.Scatter(
-            x=stablecoin_avg_volume_data["DATE"],
-            y=stablecoin_avg_volume_data["AVG_SWAP_VOLUME"],
-            name="Avg Swap Volume",
-            mode="lines",
-            yaxis="y1"
-        )
+fig1.add_trace(
+    go.Scatter(
+        x=stablecoin_avg_volume_data["DATE"],
+        y=stablecoin_avg_volume_data["AVG_SWAP_VOLUME"],
+        name="Avg Swap Volume",
+        mode="lines",
+        yaxis="y1"
     )
-    
-    fig1.add_trace(
-        go.Scatter(
-            x=stablecoin_avg_volume_data["DATE"],
-            y=stablecoin_avg_volume_data["AVG_7_DAYS_SWAP_VOLUME"],
-            name="Avg 7 Days Swap Volume",
-            mode="lines",
-            yaxis="y1"
-        )
-    )
+)
 
-    fig1.update_layout(
-        title="Comparison of Average Volume & 7-Day Average Volume of Stablecoins",
-        yaxis=dict(title="$USD"),
-        xaxis=dict(title=" "),
-        legend=dict(
-            orientation="h",   
-            yanchor="bottom", 
-            y=1.05,           
-            xanchor="center",  
-            x=0.5
-        )
+fig1.add_trace(
+    go.Scatter(
+        x=stablecoin_avg_volume_data["DATE"],
+        y=stablecoin_avg_volume_data["AVG_7_DAYS_SWAP_VOLUME"],
+        name="Avg 7 Days Swap Volume",
+        mode="lines",
+        yaxis="y1"
     )
-    st.plotly_chart(fig1, use_container_width=True)
+)
+
+fig1.update_layout(
+    title="Comparison of Average Volume & 7-Day Average Volume of Stablecoins",
+    yaxis=dict(title="$USD"),
+    xaxis=dict(title=" "),
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.05,
+        xanchor="center",
+        x=0.5
+    )
+)
+
+st.plotly_chart(fig1, use_container_width=True)
 
 # --- Reference and Rebuild Info --------------------------------------------------------------------------------------
 st.markdown(
