@@ -52,13 +52,24 @@ st.markdown(
     """
     <div style="background-color: #cff1e4; padding: 20px; border-radius: 12px; border: 1px solid #b3e6d2; line-height: 1.7; font-size: 16px;">
         
-        <p><b>Squid</b> represents a <b>groundbreaking cross-chain swap</b> and <b>liquidity routing protocol</b> that operates within the blockchain ecosystem. Designed to transcend the limitations of individual chains, <b>Squid</b> serves as a bridge that enables seamless token swaps and liquidity movement across diverse blockchain networks. This protocol harnesses the capabilities of existing <b>decentralized exchanges (DEXs)</b>, capitalizing on their infrastructure to facilitate the efficient exchange and transfer of native tokens between different blockchains.</p>
-
-        <p><b>Squid</b> introduces a <b>multifaceted approach</b> to achieving cross-chain interoperability. It offers various means through which users can engage with its functionality, including a <b>Software Development Kit (SDK)</b>, a <b>user-friendly Front End</b> interface, or direct interaction with <b>smart contracts</b>. This versatility empowers users with options to choose the most suitable method for their needs, making the cross-chain experience accessible and adaptable.</p>
-
-        <p>One of <b>Squid's remarkable features</b> is its synergy with <b>Axelar's generalized message passing</b> mechanism. This integration empowers Squid to enable <b>frictionless</b> and <b>instantaneous transactions</b> between any application and any user, regardless of the blockchain they are operating on. This breakthrough capability translates into a user-friendly ecosystem where complex interactions—such as buying <b>Non-Fungible Tokens (NFTs)</b> from diverse marketplaces, engaging in <b>multi-chain decentralized finance (DeFi)</b> activities, or participating in <b>cross-chain gaming experiences</b>—can be seamlessly executed without the need to navigate multiple transaction signing processes or download numerous wallets.</p>
-
-        <p>In essence, <b>Squid</b> represents a pivotal step towards realizing the vision of a <b>connected blockchain landscape</b>. By leveraging its cross-chain swap and liquidity routing capabilities, Squid not only enhances the <b>accessibility of digital assets</b> but also empowers users to engage in diverse activities across disparate blockchains with <b>unparalleled ease</b>. This innovation underscores the potential for Squid to shape the <b>future of decentralized applications</b> by fostering an environment where blockchain interactions transcend boundaries, ushering in a new era of <b>user-centric cross-chain experiences</b>.</p>
+        <p><b>Squid</b> represents a <b>groundbreaking cross-chain swap</b> and <b>liquidity routing protocol</b> that operates within the blockchain ecosystem. 
+        Designed to transcend the limitations of individual chains, <b>Squid</b> serves as a bridge that enables seamless token swaps and liquidity movement across 
+        diverse blockchain networks. This protocol harnesses the capabilities of existing <b>decentralized exchanges (DEXs)</b>, capitalizing on their infrastructure 
+        to facilitate the efficient exchange and transfer of native tokens between different blockchains.</p>
+        <p><b>Squid</b> introduces a <b>multifaceted approach</b> to achieving cross-chain interoperability. 
+        It offers various means through which users can engage with its functionality, including a <b>Software Development Kit (SDK)</b>, a <b>user-friendly Front 
+        End</b> interface, or direct interaction with <b>smart contracts</b>. This versatility empowers users with options to choose the most suitable method for 
+        their needs, making the cross-chain experience accessible and adaptable.</p>
+        <p>One of <b>Squid's remarkable features</b> is its synergy with <b>Axelar's generalized message passing</b> mechanism. This integration empowers Squid to 
+        enable <b>frictionless</b> and <b>instantaneous transactions</b> between any application and any user, regardless of the blockchain they are operating on. 
+        This breakthrough capability translates into a user-friendly ecosystem where complex interactions—such as buying <b>Non-Fungible Tokens (NFTs)</b> from 
+        diverse marketplaces, engaging in <b>multi-chain decentralized finance (DeFi)</b> activities, or participating in <b>cross-chain gaming experiences</b>—can be 
+        seamlessly executed without the need to navigate multiple transaction signing processes or download numerous wallets.</p>
+        <p>In essence, <b>Squid</b> represents a pivotal step towards realizing the vision of a <b>connected blockchain landscape</b>. 
+        By leveraging its cross-chain swap and liquidity routing capabilities, Squid not only enhances the <b>accessibility of digital assets</b> but also empowers 
+        users to engage in diverse activities across disparate blockchains with <b>unparalleled ease</b>. This innovation underscores the potential for Squid to 
+        shape the <b>future of decentralized applications</b> by fostering an environment where blockchain interactions transcend boundaries, ushering in a new era 
+        of <b>user-centric cross-chain experiences</b>.</p>
 
     </div>
     """,
