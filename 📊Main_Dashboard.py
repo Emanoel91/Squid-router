@@ -47,6 +47,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# ----------------------------------------------------------------------------------------------------------------------------------
+st.info("⏳On-chain data retrieval may take a few moments. Please wait while the results load.")
 # --- Info -------------------------------------------------------------------------------------------------------------------------
 st.markdown(
     """
@@ -73,11 +75,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# ----------------------------------------------------------------------------------------------------------------------------------
 st.info("📊Charts initially display data for a default time range. Select a custom range to view results for your desired period.")
-st.info("⏳On-chain data retrieval may take a few moments. Please wait while the results load.")
-
 # --- Snowflake Connection ----------------------------------------------------------------------------------------
 snowflake_secrets = st.secrets["snowflake"]
 user = snowflake_secrets["user"]
