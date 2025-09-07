@@ -273,7 +273,17 @@ with col5:
     st.markdown(card_style.format(label="🔁Avg Daily Swaps", value=f"{df_kpi['AVG_DAILY_SWAPS'][0]:,} Swaps"), unsafe_allow_html=True)
 with col6:
     st.markdown(card_style.format(label="👨‍💻Avg Daily Swappers", value=f"{df_kpi['AVG_DAILY_SWAPPERS'][0]:,} Wallets"), unsafe_allow_html=True)
-
+# -------------------------------------------------------------------------------------------------------------------
+st.markdown(
+    """
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px;">
+        <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
+            Transactions & Active Users
+        </h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # --- Row 3 ----------------------------------------------------------------------------------------------------------------------------------------------------
 @st.cache_data
 def load_time_series_data(timeframe, start_date, end_date):
