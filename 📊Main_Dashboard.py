@@ -51,7 +51,6 @@ st.markdown(
 st.markdown(
     """
     <div style="background-color: #cff1e4; padding: 20px; border-radius: 12px; border: 1px solid #b3e6d2; line-height: 1.7; font-size: 16px;">
-        
         <p><b>Squid</b> represents a <b>groundbreaking cross-chain swap</b> and <b>liquidity routing protocol</b> that operates within the blockchain ecosystem. 
         Designed to transcend the limitations of individual chains, <b>Squid</b> serves as a bridge that enables seamless token swaps and liquidity movement across 
         diverse blockchain networks. This protocol harnesses the capabilities of existing <b>decentralized exchanges (DEXs)</b>, capitalizing on their infrastructure 
@@ -70,7 +69,6 @@ st.markdown(
         users to engage in diverse activities across disparate blockchains with <b>unparalleled ease</b>. This innovation underscores the potential for Squid to 
         shape the <b>future of decentralized applications</b> by fostering an environment where blockchain interactions transcend boundaries, ushering in a new era 
         of <b>user-centric cross-chain experiences</b>.</p>
-
     </div>
     """,
     unsafe_allow_html=True
