@@ -2289,36 +2289,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# ---------------------------------------------------------------------------------------------------------------------------------------------
-st.markdown("---")
-st.header("💬 Feedback")
-
-# Initialize feedback list in session state
-if "feedback_list" not in st.session_state:
-    st.session_state.feedback_list = []
-
-# Input fields
-name = st.text_input("Your Name:")
-comment = st.text_area("Your Feedback:")
-
-# Submit button
-if st.button("Submit Feedback"):
-    if name.strip() == "":
-        st.warning("⚠️ Please enter your name.")
-    elif comment.strip() == "":
-        st.warning("⚠️ Please write some feedback.")
-    else:
-        # Save feedback
-        st.session_state.feedback_list.append({
-            "name": name,
-            "comment": comment
-        })
-        st.success("✅ Your feedback has been submitted!")
-
-# Show all feedback
-if st.session_state.feedback_list:
-    st.markdown("### 📋 Submitted Feedback")
-    for fb in st.session_state.feedback_list:
-        st.write(f"**{fb['name']}**")
-        st.info(fb["comment"])
