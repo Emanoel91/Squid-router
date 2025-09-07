@@ -468,7 +468,17 @@ with col2:
         )
     )
     st.plotly_chart(fig2, use_container_width=True)
-
+# -------------------------------------------------------------------------------------------------------------------
+st.markdown(
+    """
+    <div style="background-color:#e4d902; padding:1px; border-radius:10px; margin-top:10px; margin-bottom:10px;">
+        <h2 style="color:#000000; text-align:center; font-family: 'Britannic Bold', sans-serif;">
+            Routes
+        </h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # --- Row 4, 5 ----------------------------------------------------------------------------------------------------------------------------------------------------
 @st.cache_data
 def load_time_series_data_by_path(timeframe, start_date, end_date):
